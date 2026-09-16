@@ -1,4 +1,4 @@
-package rica_api;
+package com.rica.api.investigadores;
 
 public class InvestigadorMapper {
 
@@ -8,8 +8,8 @@ public class InvestigadorMapper {
     public static Investigador aEntidad(InvestigadorRequest request) {
         Investigador investigador = new Investigador();
         investigador.setNombreCompleto(request.getNombreCompleto());
-        investigador.setCorreoInstitucional(request.getCorreoInstitucional());
-        investigador.setGrupoInvestigacion(request.getGrupoInvestigacion());
+        investigador.setCorreoInstitucional(new CorreoInstitucional(request.getCorreoInstitucional()));
+        investigador.setGrupoDeInvestigacion(request.getGrupoInvestigacion());
         return investigador;
     }
 
@@ -17,8 +17,7 @@ public class InvestigadorMapper {
         return new InvestigadorResponse(
                 investigador.getId(),
                 investigador.getNombreCompleto(),
-                investigador.getGrupoInvestigacion()
+                investigador.getGrupoDeInvestigacion()
         );
     }
-
 }

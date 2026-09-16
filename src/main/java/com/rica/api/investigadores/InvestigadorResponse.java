@@ -1,4 +1,4 @@
-package rica_api;
+package com.rica.api.investigadores;
 
 public class InvestigadorResponse {
 
@@ -38,5 +38,4 @@ public class InvestigadorResponse {
     public void setGrupoInvestigacion(String grupoInvestigacion) {
         this.grupoInvestigacion = grupoInvestigacion;
     }
-
 }

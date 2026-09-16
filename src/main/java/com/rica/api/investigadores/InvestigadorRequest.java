@@ -1,4 +1,4 @@
-package rica_api;
+package com.rica.api.investigadores;
 
 import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.NotBlank;
@@ -41,5 +41,4 @@ public class InvestigadorRequest {
     public void setGrupoInvestigacion(String grupoInvestigacion) {
         this.grupoInvestigacion = grupoInvestigacion;
     }
-
 }

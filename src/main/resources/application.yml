@@ -6,7 +6,7 @@ spring:
     name: rica-api
 
   datasource:
-    url: jdbc:postgresql://localhost:5432/rica
+    url: jdbc:postgresql://localhost:5433/rica
     username: rica
     password: rica
 
@@ -16,9 +16,12 @@ spring:
     open-in-view: false
     properties:
       hibernate:
-        format_sql: true
-    show-sql: true
+        "[format_sql]": true
+      show-sql: true
 
   flyway:
     enabled: true
     locations: classpath:db/migration
+
+  mongodb:
+    uri: mongodb://localhost:27018/rica

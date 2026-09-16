@@ -1,4 +1,4 @@
-package rica_api;
+package com.rica.api.plataforma;
 
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.stereotype.Component;
@@ -13,7 +13,7 @@ public class ArranqueInformativo implements CommandLineRunner {
     }
 
     @Override
-    public void run(String... args) {
+    public void run(String... args) throws Exception {
         System.out.println(saludoInstitucionalService.mensajeDeBienvenida());
     }
 

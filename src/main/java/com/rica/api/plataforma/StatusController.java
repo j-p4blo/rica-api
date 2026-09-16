@@ -1,9 +1,9 @@
-package rica_api;
+package com.rica.api.plataforma;
+
+import java.util.Map;
 
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
-
-import java.util.Map;
 
 @RestController
 public class StatusController {
@@ -11,9 +11,8 @@ public class StatusController {
     @GetMapping("/api/status")
     public Map<String, String> status() {
         return Map.of(
-                "proyecto", "RICA",
-                "estado", "operativo"
+            "proyecto", "RICA",
+            "estado", "operativo"
         );
     }
-
 }

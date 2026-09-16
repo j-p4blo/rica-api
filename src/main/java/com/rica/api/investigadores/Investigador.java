@@ -1,6 +1,8 @@
-package rica_api;
+package com.rica.api.investigadores;
 
+import jakarta.persistence.AttributeOverride;
 import jakarta.persistence.Column;
+import jakarta.persistence.Embedded;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -18,20 +20,22 @@ public class Investigador {
     @Column(name = "nombre_completo", nullable = false, length = 150)
     private String nombreCompleto;
 
-    @Column(name = "correo_institucional", nullable = false, unique = true, length = 150)
-    private String correoInstitucional;
+    @Embedded
+    @AttributeOverride(name = "valor",
+            column = @Column(name = "correo_institucional", nullable = false, unique = true, length = 150))
+    private CorreoInstitucional correoInstitucional;
 
     @Column(name = "grupo_investigacion", length = 150)
-    private String grupoInvestigacion;
+    private String grupoDeInvestigacion;
 
     public Investigador() {
     }
 
-    public Investigador(Long id, String nombreCompleto, String correoInstitucional, String grupoInvestigacion) {
+    public Investigador(Long id, String nombreCompleto, CorreoInstitucional correoInstitucional, String grupoDeInvestigacion) {
         this.id = id;
         this.nombreCompleto = nombreCompleto;
         this.correoInstitucional = correoInstitucional;
-        this.grupoInvestigacion = grupoInvestigacion;
+        this.grupoDeInvestigacion = grupoDeInvestigacion;
     }
 
     public Long getId() {
@@ -50,20 +54,20 @@ public class Investigador {
         this.nombreCompleto = nombreCompleto;
     }
 
-    public String getCorreoInstitucional() {
+    public CorreoInstitucional getCorreoInstitucional() {
         return correoInstitucional;
     }
 
-    public void setCorreoInstitucional(String correoInstitucional) {
+    public void setCorreoInstitucional(CorreoInstitucional correoInstitucional) {
         this.correoInstitucional = correoInstitucional;
     }
 
-    public String getGrupoInvestigacion() {
-        return grupoInvestigacion;
+    public String getGrupoDeInvestigacion() {
+        return grupoDeInvestigacion;
     }
 
-    public void setGrupoInvestigacion(String grupoInvestigacion) {
-        this.grupoInvestigacion = grupoInvestigacion;
+    public void setGrupoDeInvestigacion(String grupoDeInvestigacion) {
+        this.grupoDeInvestigacion = grupoDeInvestigacion;
     }
 
 }

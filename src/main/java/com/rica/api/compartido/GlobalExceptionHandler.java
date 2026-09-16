@@ -1,4 +1,8 @@
-package rica_api;
+package com.rica.api.compartido;
+
+import java.time.LocalDateTime;
+import java.util.LinkedHashMap;
+import java.util.Map;
 
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -6,9 +10,7 @@ import org.springframework.web.bind.MethodArgumentNotValidException;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.RestControllerAdvice;
 
-import java.time.LocalDateTime;
-import java.util.LinkedHashMap;
-import java.util.Map;
+import com.rica.api.investigadores.CorreoDuplicadoException;
 
 @RestControllerAdvice
 public class GlobalExceptionHandler {
@@ -26,8 +28,8 @@ public class GlobalExceptionHandler {
     @ExceptionHandler(MethodArgumentNotValidException.class)
     public ResponseEntity<Map<String, Object>> manejarValidacion(MethodArgumentNotValidException ex) {
         Map<String, String> errores = new LinkedHashMap<>();
-        ex.getBindingResult().getFieldErrors().forEach(error ->
-                errores.put(error.getField(), error.getDefaultMessage()));
+        ex.getBindingResult().getFieldErrors().forEach(error
+                -> errores.put(error.getField(), error.getDefaultMessage()));
 
         Map<String, Object> cuerpo = new LinkedHashMap<>();
         cuerpo.put("timestamp", LocalDateTime.now());
@@ -44,5 +46,4 @@ public class GlobalExceptionHandler {
         cuerpo.put("mensaje", mensaje);
         return ResponseEntity.status(estado).body(cuerpo);
     }
-
 }
